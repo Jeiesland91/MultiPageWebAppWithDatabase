@@ -1,0 +1,45 @@
+﻿@using System.Runtime.CompilerServices
+@model List<ContactList.Models.Contact>
+@{
+    ViewBag.Title = "MyContacts";
+}
+
+<h2>Contact List</h2>
+
+<a asp-controller="Contact" asp-action="Add">Add New Contact</a>
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>PhoneNumber</th>
+        <th>AddressLine1</th>
+        <th>AddressLine2</th>
+        <th>City</th>
+        <th>State</th>
+        <th>ZipCode</th>
+        <th>NoteInfo</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var contact in Model)
+        {
+            <tr>
+                <td>@contact.Name</td>
+                <td>@contact.PhoneNumber</td>
+                <th>@contact.AddressLine1</th>
+                <th>@contact.AddressLine2</th>
+                <th>@contact.City</th>
+                <td>@contact.State</td>
+                <td>@contact.ZipCode</td>
+                <td>@contact.Note.Name</td>
+                <td>
+                    <a asp-controller="Contact" asp-action="Edit"
+                       asp-route-id="@contact.ContactId">Edit</a>
+                    <a asp-controller="Contact" asp-action="Delete"
+                       asp-route-id="@contact.ContactId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
